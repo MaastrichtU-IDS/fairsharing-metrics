@@ -1,141 +1,56 @@
-# NCATS Translator Data Quality Analysis
+# NCATS Translator
+[![License](https://img.shields.io/badge/FAIR-metrics-orange.svg)](http://fairmetrics.org/)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-This project analyzes quality statistics of datasets selected for the NCATS Translator project.
+## Data Quality Assessment Implementation  |  Docker + RDFUnit
 
-## Getting Started
+A Dockerization of the NCATS Translator for Data Quality Analysis.   
+The purpose of this project is to provide automation of the [NCATS Translator](https://github.com/pedrohserrano/NCATS-Translator-DQA) stand-alone implementation in order to escalate on more general data quality assessment.
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+## Prerequisites
 
-### Prerequisites
+- Installing [Docker](https://docs.docker.com/) for [Mac](https://docs.docker.com/docker-for-mac/install/) and [Windows](https://docs.docker.com/docker-for-windows/install/download-docker-for-windows)  
+![](img/docker.png)
 
+## Usage
 
-Note: The NCATS Translator DQA looks for RDFUnit in the same folder as the NCATS-Translator-DQA repository. If RDFUnit is installed to a different location, it can be specified in the DQA's configuration file (config.py)
+##### Clone the repository
 
-Install JDK8 if it has not been installed yet. Maven requires the JDK but does not work with JDK9. Use JDK8 instead.  
+        git clone https://github.com/pedrohserrano/data-quality-NCATS-translator.git && \
+        cd data-quality-NCATS-translator
 
-```
-cd RDFUnit  
-./bin/rdfunit -h
-```
+##### Build the Docker image
 
-Note: rdfunit must be run from the RDFUnit folder, i.e., it fails when run from inside the bin folder or anywhere other than the RDFUnit folder.
+        docker build -t translator_dqa .
 
-#### Install GraphDB
+##### Run the Docker container
 
-Download GraphDB Free as a stand-alone server: [https://ontotext.com/products/graphdb/](https://ontotext.com/products/graphdb/)
+        docker run -it -p 7200:7200 \
+        -v "$PWD"/:/root/data-quality-NCATS-translator/ \
+        --name=translator_box translator_dqa 
 
-Extract the downloaded zip file to a location of your choice.
+##### Run GraphDB
 
-Start GraphDB:  
-```
-./<GraphDB>/bin/graphdb
-```
-
-Open GraphDB in your browser to check that it is running. Default: http://localhost:7200
-
-For additional information, check the [GraphDB quick start guide](http://graphdb.ontotext.com/documentation/free/quick-start-guide.html#run-graphdb-as-a-stand-alone-server)
-
-### Installing NCATS Translator DQA
+        ./graphdb.sh
 
 
+In case you want to keep the container running, then you can make more than one task inside the container, the running command:
 
-Note: this must either be performed each time a terminal is opened or you can add this line to your shell's initiation script, e.g., ~/.bashrc
+        ./translator_dqa.py -d /root/NCATS-Translator-DQA/Input/kegg-drug.ttl
 
-## Running 
+(exit the container `exit`)
 
-translator\_dqa.py is the main tool for performing data quality analysis and can be invoked from the command line. Display help arguments for the translator\_dqa command line interface:
+In case you want to run again an existing container   
 
-```
-cd <NCATS-Translator-DQA>/ncats_translator_dqa
-python3 translator_dqa.py -h
-```
+        docker start -ai dqa_box
 
-translator\_dqa can be run in one of two modes: 1) single data set; 2) multiple data sets.
+Notice that we choose `dqa_box` a default name for the container, furthermore, you want to remove it `docker rm dqa_box`
 
-### Single data set
+GraphDB is available on  [http://localhost:7200/](http://localhost:7200/)
 
-Specify the optional arguments to collect preliminary statistics from FAIRsharing.org and/or calculate computational metrics on a data set. The path to the data file must be specified as an absolute path. 
+## Licence
 
-```
-python3 translator_dqa.py -f https://biosharing.org/biodbcore-000015 
-python3 translator_dqa.py -d /media/casey/Data/Research/NCATS-DQ/Data/chembl_18.0_cellline.ttl
-python3 translator_dqa.py -f https://biosharing.org/biodbcore-000015 -d /media/casey/Data/Research/NCATS-DQ/Data/chembl_18.0_cellline.ttl
-```
-
-The default output directory for results files is under <NCATS-Translator-DQA>/output. 
-
-Preliminary statistics from FAIRsharing.org are saved in a tab-separated CSV file (*.csv) and as RDF in turtle format (*.ttl) conforming to the W3C Data Quality Vocabulary. The results files are named based on the URL, e.g., https://biosharing.org/biodbcore-000015 results in biodbcore-000015.csv and biodbcore-000015.ttl
-
-Computational metrics are saved in HTML (*.html) and as RDF in turtle format (*.ttl). Computational metrics are also uploaded to GraphDB to facilitate visualization and querying in a new repository named similarly to the data filename. For example, performing computational metrics on data\_file.ext produces data\_file\_computational\_metrics.html, data\_file\_computational\_metrics.ttl, and a GraphDB repository named data\_file\_ext.
-
-### Multiple data sets
-
-To analyze multiple data sets, specify the FAIRsharing.org URLs and absolute paths to the data files in a N x 2 CSV file where N is the number of data sets to analyze. See <NCATS-Translator-DQA>/ncats\_translator\_dqa/resources/example\_datasets.csv for an example. 
-
-```
-python3 translator_dqa.py -m /path/to/datasets.csv
-```
-
-This will gather preliminary statistics and calculate computational metrics on the specified data sets and produce results similar as if performed on a single data set, except the preliminary statistics CSV file will combine results from all data sets. The CSV file will be named prelim\_stats\_<timestamp>.csv. 
-
-## Troubleshooting
-
-### Python 3.6
-
-On Ubuntu 16.04 and below, the default Python3 version is 3.5.x. To install Python 3.6:
-
-```
-sudo add-apt-repository ppa:jonathonf/python-3.6  
-sudo apt install python3.6  
-wget https://bootstrap.pypa.io/get-pip.py  
-sudo python3.6 get-pip.py
-```
-
-Use ```python3.6``` to invoke python and ```pip3.6``` to install required packages
-
-### ModuleNotFoundError: No module named 'ncats_translator_dqa'
-
-Add the NCATS-Translator-DQA folder to the PYTHONPATH environment variable. For example, if the NCATS-Translator-DQA folder exists at /home/username/NCATS-Translator-DQA:
-
-```
-export PYTHONPATH=$PYTHONPATH:/home/username/NCATS-Translator-DQA
-```
-
-You can also verify that the PYTHONPATH environment variable is set correctly:
-
-```
-echo $PYTHONPATH
-python3
->>> import sys
->>> sys.path
-```
-
-### ImportError: cannot import name 'etree'
-
-If running translator\_dqa.py produces the above error, try un-installing and re-installing lxml:
-
-```
-sudo pip3 uninstall lxml  
-sudo pip3 install lxml
-```
-
-### ConnectionRefusedError:[Errno 61] Connection refused
-
-If you see a ConnectionRefusedError after the message "GraphDB: deleting repository ...", check that GraphDB is running and that config.py has the correct URL to communicate with GraphDB. 
-
-### GraphDB repositories are empty
-
-translator_dqa.py initiates uploads of data files to GraphDB, but does not wait for the uploads to finish. Depending on the sizes of the validation files, it may take some time for the files to finish uploading and for GraphDB to process the new data. The new repositories for each data set should be available immediately. 
-
-### log4j:WARN
-
-If you see warning messages when running dqv-report like _log4j:WARN Please initialize the log4j system properly._, make a copy of the log4j.properties file  
-from: <RDFUnit>/rdfunit-validate/target/classes/log4j.properties  
-to: <RDFUnit>/rdfunit-w3c-dqv/target/classes/log4j.properties  
-```
-cd <RDFUnit>
-cp rdfunit-validate/target/classes/log4j.properties rdfunit-w3c-dqv/target/classes
-```
+The MIT License (MIT) 2017
 
 ## Acknowledgments
 

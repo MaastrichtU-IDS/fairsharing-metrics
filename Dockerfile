@@ -19,10 +19,7 @@ RUN cd && \
     export JAVA_TOOL_OPTIONS="-Xmx1024m -Xms1024m" && \
     git clone https://github.com/AKSW/RDFUnit.git && \
     cd RDFUnit && mvn -pl rdfunit-validate -am clean install -Dmaven.test.skip=true -Dmaven.javadoc.skip=true -Dgpg.skip=true -Dsource.skip=true && \
-    mkdir /data-quality-NCATS-translator && \
-    chmod +x ./root/data-quality-NCATS-translator/translator/translator_dqa.py && \
-    unzip data-quality-NCATS-translator/graphdb-free-8.3.1-dist.zip -y && \
-    ./root/data-quality-NCATS-translator/graphdb-free-8.3.1/bin/graphdb -d
+    mkdir /data-quality-NCATS-translator
     
 WORKDIR /root/data-quality-NCATS-translator
 
