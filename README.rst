@@ -8,45 +8,11 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-#### Python 3.6
-
-NCATS Translator DQA is written in Python3 (requires version 3.6+). Install python3.6:
-
-```
-sudo apt install python3
-```
-
-NCATS Translator DQA requires the following libraries: requests, lxml, pandas, and rdflib.
-
-```
-sudo pip3 install requests lxml pandas rdflib
-```
-
-#### Install RDFUnit
-
-Clone the repository:
-
-```
-git clone https://github.com/AKSW/RDFUnit.git
-```
-
-or download the latest release from [https://github.com/AKSW/RDFUnit/releases](https://github.com/AKSW/RDFUnit/releases)  
 
 Note: The NCATS Translator DQA looks for RDFUnit in the same folder as the NCATS-Translator-DQA repository. If RDFUnit is installed to a different location, it can be specified in the DQA's configuration file (config.py)
 
 Install JDK8 if it has not been installed yet. Maven requires the JDK but does not work with JDK9. Use JDK8 instead.  
-```
-sudo apt-get install openjdk-8-jdk-headless  
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-<ARCHITECTURE>/  
-export PATH=$PATH:$JAVA_HOME/bin
-```
 
-Install Maven  
-```
-sudo apt install maven
-```
-
-Running RDFUnit for the first time should automatically build it:  
 ```
 cd RDFUnit  
 ./bin/rdfunit -h
@@ -71,21 +37,8 @@ For additional information, check the [GraphDB quick start guide](http://graphdb
 
 ### Installing NCATS Translator DQA
 
-Clone the repository:  
-```
-git clone https://github.com/ChunhuaWeng/NCATS-Translator-DQA.git
-```
 
-Make a copy of config.py.DEFAULT, rename it to config.py, and edit the configuration for your system if needed. The path\_rdfunit may need to be editted if RDFUnit was not installed in the same location as NCATS-Translator-DQA repository. Most other settings should not need to be changed.  
-```
-cd NCATS-Translator-DQA/ncats_translator_dqa/  
-cp config.py.DEFAULT config.py
-```
 
-Add the NCATS-Translator-DQA folder to PYTHONPATH.  
-```
-export PYTHONPATH=$PYTHONPATH:/path/to/the/folder/NCATS-Translator-DQA
-```
 Note: this must either be performed each time a terminal is opened or you can add this line to your shell's initiation script, e.g., ~/.bashrc
 
 ## Running 
