@@ -2,7 +2,7 @@ import sys
 import os
 from rdflib import Graph, Literal, URIRef, Namespace, RDF
 from rdflib.namespace import DCTERMS, XSD
-from ncats_translator_dqa import config
+from translator import config
 
 
 class PrelimStatsRDF:

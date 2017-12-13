@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import sys
 
 REQUIRED_PYTHON = "python3"

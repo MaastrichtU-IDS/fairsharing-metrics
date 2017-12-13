@@ -2,9 +2,9 @@
 """
 
 import os
-from ncats_translator_dqa import config
-from ncats_translator_dqa.computational_metrics.GraphDBWrapper import GraphDBWrapper
-from ncats_translator_dqa.computational_metrics.RDFUnitWrapper import RDFUnitWrapper
+from translator import config
+from translator.computational_metrics.GraphDBWrapper import GraphDBWrapper
+from translator.computational_metrics.RDFUnitWrapper import RDFUnitWrapper
 
 
 def computational_metrics(file_dataset, schema=''):

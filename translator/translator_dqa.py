@@ -4,9 +4,9 @@ import os
 import argparse
 import csv
 from datetime import datetime
-from ncats_translator_dqa import config
-from ncats_translator_dqa.preliminary_statistics import fair_scraper, prelim_stats_rdf
-from ncats_translator_dqa.computational_metrics.computational_metrics import computational_metrics
+from translator import config
+from translator.preliminary_statistics import fair_scraper, prelim_stats_rdf
+from translator.metrics.computational_metrics import computational_metrics
 
 
 def translator_dqa(fair_url=None, file_data=None, file_multi=None, schema=None):
@@ -51,7 +51,7 @@ def translator_dqa(fair_url=None, file_data=None, file_multi=None, schema=None):
 
         # Write all preliminary statistics to a single csv
         filename = 'prelim_stats_' + datetime.now().isoformat(timespec='seconds') + '.csv'
-        filename = 'prelim_stats.csv'
+        #filename = 'prelim_stats.csv'
         output_csv_file = os.path.join(dir_output, filename)
         fair_scraper.fair_table(prelim_stats_list, output_csv_file)
 
@@ -95,17 +95,15 @@ def main():
     :return:
     """
     # Parse arguments
-    parser = argparse.ArgumentParser(description=('NCATS translator data quality analysis. Gathers preliminary data '
+    parser = argparse.ArgumentParser(description=('NCATS translator data quality assessment. Gathers preliminary data '
                                                   'quality statistics and/or computational metrics on data sets.'),
                                      epilog=('Examples: \n\n'                                     
                                              'Single data set, preliminary statistics only:\n'
-                                             'python3 translator_dqa.py -f https://fairsharing.org/biodbcore-000340\n\n'                                     
+                                             './translator_dqa.py -f https://fairsharing.org/biodbcore-000340\n\n'                                     
                                              'Single data set, computational metrics only:\n'
-                                             'python3 translator_dqa.py -d /home/user/data/data.ttl\n\n'                                     
-                                             'Single data set, preliminary and computational metrics:\n'
-                                             'python3 translator_dqa.py -f https://fairsharing.org/biodbcore-000340 -d /home/user/data/data.ttl\n\n'                                     
+                                             './ translator_dqa.py -d /home/user/data/data.ttl\n\n'                                     
                                              'Multiple data sets defined in a CSV file\n'
-                                             'python3 translator_dqa.py -m /home/user/data/multiple_data_sets.csv'),
+                                             './translator_dqa.py -m /home/user/data/multiple_data_sets.csv'),
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('-f', dest='fair_url', help='FAIRsharing.org URL for preliminary statistics')
     parser.add_argument('-d', dest='file_data', help='Absolute path to data file for computational metrics')

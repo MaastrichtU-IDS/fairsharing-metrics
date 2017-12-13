@@ -4,8 +4,8 @@ Outputs an RDF file (turtle .ttl format) for each dataset tested with the filena
 
 import os
 import csv
-from ncats_translator_dqa import config
-from ncats_translator_dqa.preliminary_statistics import fair_scraper, prelim_stats_rdf
+from translator import config
+from translator.preliminary_statistics import fair_scraper, prelim_stats_rdf
 
 # FAIRsharing.org URLs to test
 urls = ['https://biosharing.org/biodbcore-000015',

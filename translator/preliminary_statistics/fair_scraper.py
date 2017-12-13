@@ -5,7 +5,7 @@ import os
 import requests
 from lxml import html
 import pandas as pd
-from ncats_translator_dqa import config
+from translator import config
 
 
 def fair_scraper(url):
@@ -137,7 +137,7 @@ def fair_table(fpss, file_output):
     df.to_csv(file_output, sep='\t')
 
     if config.verbose:
-        print('Tabulated results: ' + file_output)
+        print('tabulated results: ' + file_output)
 
 
 class FAIRPrelimStats:

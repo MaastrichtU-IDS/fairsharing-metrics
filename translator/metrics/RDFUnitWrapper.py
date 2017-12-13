@@ -4,7 +4,7 @@ import os
 import sys
 import subprocess
 import shutil
-from ncats_translator_dqa import config
+from translator import config
 
 
 class RDFUnitWrapper:
