@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+   xmlns:ns1="http://www.w3.org/ns/dcat#"
+   xmlns:ns2="http://www.w3.org/ns/dqv#"
+   xmlns:ns3="http://purl.org/dc/terms/"
+   xmlns:ns4="http://www.w3.org/2004/02/skos/core#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dqv#Relevancy">
+    <rdf:type rdf:resource="http://www.w3.org/ns/dqv#Dimension"/>
+    <ns4:prefLabel xml:lang="en">Relevancy</ns4:prefLabel>
+    <ns4:definition xml:lang="en">Relevancy refers to the provision of information which is in accordance with the task at hand and important to the users query</ns4:definition>
+    <ns2:inCategory rdf:resource="http://www.w3.org/ns/dqv#Contextual"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/hcls#licence">
+    <ns2:value xml:lang="en">['Applies to: Data use = {Creative Commons Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)}']</ns2:value>
+    <ns2:isMeasurementOf rdf:resource="http://www.w3.org/ns/dqv#L2metric"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/dqv#QualityMeasurement"/>
+    <ns2:computedOn rdf:resource="http://bio2rdf.org#CHEMBLdatasetDistribution"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dqv#Interoperability">
+    <ns2:inCategory rdf:resource="http://www.w3.org/ns/dqv#Representational"/>
+    <ns4:prefLabel xml:lang="en">Interoperability</ns4:prefLabel>
+    <ns4:definition xml:lang="en">Interoperability is the degree to which the format and structure of the information conforms to previously returned information as well as data from other sources.</ns4:definition>
+    <rdf:type rdf:resource="http://www.w3.org/ns/dqv#Dimension"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://bio2rdf.org#CHEMBL">
+    <ns1:distribution rdf:resource="http://bio2rdf.org#CHEMBLdatasetDistribution"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <ns3:title xml:lang="en">ChEMBL: a large-scale bioactivity database for drug discovery</ns3:title>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/hcls#coverage">
+    <rdf:type rdf:resource="http://www.w3.org/ns/dqv#QualityMeasurement"/>
+    <ns2:value xml:lang="en">Peptide</ns2:value>
+    <ns2:value xml:lang="en">Small molecule</ns2:value>
+    <ns2:isMeasurementOf rdf:resource="http://www.w3.org/ns/dqv#R2metric"/>
+    <ns2:value xml:lang="en">Approved drug</ns2:value>
+    <ns2:computedOn rdf:resource="http://bio2rdf.org#CHEMBLdatasetDistribution"/>
+    <ns2:value xml:lang="en">Biomedical Science</ns2:value>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dqv#Licensing">
+    <rdf:type rdf:resource="http://www.w3.org/ns/dqv#Dimension"/>
+    <ns2:inCategory rdf:resource="http://www.w3.org/ns/dqv#Accessibility"/>
+    <ns4:definition xml:lang="en">Licensing is defined as the granting of permission for a consumer to re-use a dataset under defined conditions</ns4:definition>
+    <ns4:prefLabel xml:lang="en">Licensing</ns4:prefLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dqv#IO2metric">
+    <ns4:type xml:lang="en">Re-use of existing vocabularies.</ns4:type>
+    <rdf:type rdf:resource="http://www.w3.org/ns/dqv#QualityMeasurement"/>
+    <ns2:expectedDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <ns2:inDimension rdf:resource="http://www.w3.org/ns/dqv#Interoperability"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://bio2rdf.org#CHEMBLdatasetDistribution">
+    <ns3:title xml:lang="en">ChEMBL: a large-scale bioactivity database for drug discovery</ns3:title>
+    <ns2:hasQualityMeasurement rdf:resource="http://www.w3.org/hcls#licensing"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/dcat#distribution"/>
+    <ns1:downloadURL rdf:resource="https://fairsharing.org/biodbcore-000015"/>
+    <ns2:hasQualityMeasurement rdf:resource="http://www.w3.org/hcls#coverage"/>
+    <ns2:hasQualityMeasurement rdf:resource="http://www.w3.org/hcls#vocabReuse"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/hcls#vocabReuse">
+    <rdf:type rdf:resource="http://www.w3.org/ns/dqv#QualityMeasurement"/>
+    <ns2:computedOn rdf:resource="http://bio2rdf.org#CHEMBLdatasetDistribution"/>
+    <ns2:value xml:lang="en">Chemical Entities of Biological Interest</ns2:value>
+    <ns2:value xml:lang="en">PSI Molecular Interaction Controlled Vocabulary</ns2:value>
+    <ns2:isMeasurementOf rdf:resource="http://www.w3.org/ns/dqv#IO2metric"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dqv#L2metric">
+    <ns2:inDimension rdf:resource="http://www.w3.org/ns/dqv#Licensing"/>
+    <ns2:expectedDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/dqv#QualityMeasurement"/>
+    <ns4:type xml:lang="en">Detection of a license in the documentation of the dataset</ns4:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dqv#R2metric">
+    <ns4:type xml:lang="en">Coverage of scope and datatypes in the dataset.</ns4:type>
+    <rdf:type rdf:resource="http://www.w3.org/ns/dqv#QualityMeasurement"/>
+    <ns2:expectedDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <ns2:inDimension rdf:resource="http://www.w3.org/ns/dqv#Relevancy"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dqv#Contextual">
+    <rdf:type rdf:resource="http://www.w3.org/ns/dqv#Category"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dqv#Representational">
+    <rdf:type rdf:resource="http://www.w3.org/ns/dqv#Category"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dqv#Accessibility">
+    <rdf:type rdf:resource="http://www.w3.org/ns/dqv#Category"/>
+  </rdf:Description>
+</rdf:RDF>

@@ -1,0 +1,11 @@
+{
+    "https://fairsharing.org/biodbcore-000015": "http://bio2rdf.org#CHEMBL"
+    ,
+    "https://fairsharing.org/biodbcore-000304": "http://bio2rdf.org#drugbank"
+    ,
+    "https://fairsharing.org/biodbcore-000456": "http://bio2rdf.org#pubmed"
+    ,
+    "https://fairsharing.org/biodbcore-000739": "http://bio2rdf.org#clinvar"
+    ,
+    "https://fairsharing.org/bsg-s000909" : "http://bio2rdf.org#wikipathways"
+  }
