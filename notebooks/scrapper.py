@@ -69,7 +69,7 @@ print(licence)
 fpss = [url, title, sad, ta, licence]
 num_fpss = len(fpss)
 
-titles = ['url', 'title', 'scope and data types', 'terminology artifacts', 'license']
+titles = ['url', 'title', 'coverage', 'vocabReuse', 'license']
 zip_fpss = {key: value for (key, value) in zip(titles, fpss)}
 
 

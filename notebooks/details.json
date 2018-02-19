@@ -1,0 +1,23 @@
+{
+    "license": {
+        "DQVmetric": "L2metric",
+        "SKOStype": "Detection of a license in the documentation of the dataset.",
+        "DQVdimension": "Licensing",
+        "SKOSdefinition": "Interoperability is the degree to which the format and structure of the information conforms to previously returned information as well as data from other sources.",
+        "DQVcategory": "Accessibility"
+    },
+    "vocabReuse": {
+        "DQVmetric": "IO2metric",
+        "SKOStype": "Re-use of existing vocabularies.",
+        "DQVdimension": "Interoperability",
+        "SKOSdefinition": "Interoperability is the degree to which the format and structure of the information conforms to previously returned information as well as data from other sources.",
+        "DQVcategory": "Representational"
+    },
+    "coverage": {
+        "DQVmetric": "R2metric",
+        "SKOStype": "Coverage of scope and datatypes in the dataset.",
+        "DQVdimension": "Relevancy",
+        "SKOSdefinition": "Relevancy refers to the provision of information which is in accordance with the task at hand and important to the users query.",
+        "DQVcategory": "Contextual"
+    }
+}
