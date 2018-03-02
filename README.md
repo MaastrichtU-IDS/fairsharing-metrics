@@ -19,20 +19,19 @@ The purpose of this project is to provide automation as a stand-alone implementa
 
 ##### Build the Docker image
 
-        docker build -t fairssharing-metrics .
+        docker build -t fairsharing-metrics .
 
 ##### Run the Docker container
 
-        docker run -it \
-        -v "$PWD"/:/root/ \
-        --name=translator_box translator_dqa 
+        docker run -it --rm \
+        -v "$PWD"/FAIRsharing:/root/FAIRsharing \
+        --name=FAIRsharing fairsharing-metrics
 
 (exit the container `exit`)
 
 In case you want to run again an existing container   
 
-        docker start -ai dqa_box
-
+        docker start -ai FAIRsharing
 
 
 ## Licence

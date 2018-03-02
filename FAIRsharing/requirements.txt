@@ -1,0 +1,4 @@
+lxml
+rdflib == 4.2.2
+requests == 2.18.4
+pandas == 0.22.0
