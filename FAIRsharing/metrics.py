@@ -36,9 +36,9 @@ import json
 # In[4]:
 
 
-metrics = json.loads(open('metrics.json').read())
-catalog = json.loads(open('downloadURL.json').read())
-details = json.loads(open('details.json').read())
+metrics = json.loads(open('../catalogs/metrics.json').read())
+catalog = json.loads(open('../catalogs/downloadURL.json').read())
+details = json.loads(open('../catalogs/details.json').read())
 
 
 # In[5]:
@@ -137,116 +137,6 @@ for metric in metrics_names:
 # In[19]:
 
 
-g.serialize(destination='test.ttl')
+g.serialize(destination='chembl.nt', format='nt')
 
-
-# In[30]:
-
-
-#g.serialize(destination='test.html')
-
-
-# In[ ]:
-
-
-#reates and adds a new measurement to the graph
-#:param measurement_label: A unique label for the measurement. Leave empty for auto naming.
-#:return: The new measurement node
-if len(measurement_label) == 0:
-    # Create a new measurement label
-    n_measurements += 1
-    measurement_label = 'measurement' + '%04d' % n_measurements
-
-
-# In[ ]:
-
-
-def serialize(self, file, format='ttl'):
-    """Writes the RDF graph to file in the specified format
-
-    :param file: Path to the file to write to (String)
-    :param format: RDF format (default: 'ttl')
-    :return:
-    """
-    try:
-        # Write out turtle file
-        self.g.serialize(destination=file, format=format)
-
-        # Output message
-        if config.verbose:
-            print('Preliminary statistics in W3C DQV written to: ' + file)
-    except IOError:
-        sys.stderr.write('Error while trying to serialize preliminary stats RDF graph to file: ' + file + '\n')
-
-
-# ## Testing
-
-# In[ ]:
-
-
-# I NEED A CONDITION THAT SAYS THE DOWNLOAD URL IS NOT IN THE CATALOG
-
-
-# In[ ]:
-
-
-# FAIRsharing.org URLs to test
-urls = ['https://biosharing.org/biodbcore-000015',
-        'https://biosharing.org/biodbcore-000037',
-        'https://biosharing.org/biodbcore-000081',
-        'https://biosharing.org/biodbcore-000095',
-        'https://biosharing.org/biodbcore-000104',
-        'https://biosharing.org/biodbcore-000137',
-        'https://biosharing.org/biodbcore-000155',
-        'https://biosharing.org/biodbcore-000156',
-        'https://biosharing.org/biodbcore-000173',
-        'https://biosharing.org/biodbcore-000304',
-        'https://biosharing.org/biodbcore-000329',
-        'https://biosharing.org/biodbcore-000330',
-        'https://biosharing.org/biodbcore-000341',
-        'https://biosharing.org/biodbcore-000417',
-        'https://biosharing.org/biodbcore-000438',
-        'https://biosharing.org/biodbcore-000441',
-        'https://biosharing.org/biodbcore-000455',
-        'https://biosharing.org/biodbcore-000470',
-        'https://biosharing.org/biodbcore-000495',
-        'https://biosharing.org/biodbcore-000525',
-        'https://biosharing.org/biodbcore-000544',
-        'https://biosharing.org/biodbcore-000552',
-        'https://biosharing.org/biodbcore-000663',
-        'https://biosharing.org/biodbcore-000730',
-        'https://biosharing.org/biodbcore-000805',
-        'https://biosharing.org/biodbcore-000826',
-        'https://biosharing.org/biodbcore-000842',
-        'https://fairsharing.org/biodbcore-000618',
-        'https://fairsharing.org/biodbcore-000340']
-
-# Write the results to the configured output folder
-dir_output = config.path_output
-if not os.path.exists(dir_output):
-    os.mkdir(dir_output)
-
-# List of preliminary statistics results
-stats_list = []
-
-# Process each url
-for url in urls:
-    # Scrape the page
-    stats = fair_scraper.fair_scraper(url)
-    stats_list.append(stats)
-
-    # Output filename based on url
-    filename = url.split('/')[-1] + '_rdf.ttl'
-    output_file = os.path.join(dir_output, filename)
-
-    # Use the dataset title as the local identifier
-    dataset_id = "".join([c for c in stats.title if c.isalnum()]) + 'Dataset'
-
-    # Write out preliminary statistics using W3C DQV
-    stats_rdf = prelim_stats_rdf.PrelimStatsRDF(dataset_id, stats)
-    stats_rdf.serialize(output_file, format='ttl')
-
-# Run the scraper and write the results to CSV
-file_output = os.path.join(dir_output, 'FAIRsharing_table.csv')
-#fair_scraper.fair_table(stats_list, file_output)
-
+print('FAIRsharing Metrics Fsile Created')
