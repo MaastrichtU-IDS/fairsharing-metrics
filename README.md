@@ -25,7 +25,7 @@ The purpose of this project is to provide automation as a stand-alone implementa
 
 ### Run the Docker container
 
-        docker run -it --rm \
+        docker run -it \
         -v "$PWD"/FAIRsharing:/root/FAIRsharing \
         --name=FAIRsharing fairsharing-metrics
 
@@ -34,6 +34,18 @@ The purpose of this project is to provide automation as a stand-alone implementa
 In case you want to run again an existing container
 
         docker start -ai FAIRsharing
+
+### Run once
+
+        docker run -it --rm \
+        -v "$PWD"/FAIRsharing:/root/FAIRsharing \
+        fairsharing-metrics <URL>
+
+    urls = ['https://fairsharing.org/biodbcore-000015',
+            'https://fairsharing.org/biodbcore-000304',
+            'https://fairsharing.org/biodbcore-000456',
+            'https://fairsharing.org/bsg-s000909']
+
 
 ## Licence
 

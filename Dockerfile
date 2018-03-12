@@ -8,4 +8,5 @@ WORKDIR /root/FAIRsharing
 
 RUN pip install -r requirements.txt
 
-CMD [ "python", "scrapper.py" ]
+#CMD [ "python", "scrapper_metrics.py" ]
+ENTRYPOINT ["./execute.sh"]

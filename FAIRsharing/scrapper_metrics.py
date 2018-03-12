@@ -1,5 +1,70 @@
+import os
+import sys
+import requests
+from lxml import html
+import pandas as pd
+import json
 
-# coding: utf-8
+
+# #### fair_scraper(url)
+# FAIRsharing.org for some basic information.
+# 
+#     Scrapes FAIRsharing.org for some basic information, including title, scope and data types, terminology artifacts,
+#     and conditions of use.
+# 
+#     :param url: String url to page to scrape
+#     :return: FAIRPrelimStats object
+
+url = str(sys.argv [1])#'https://fairsharing.org/biodbcore-000015'
+page = requests.get(url)
+html_content = html.fromstring(page.content)
+
+# - Get the title
+title = html_content.xpath('//div[@class="title-text"]/h2/text()[last()]')
+title = title[0].strip()
+print(title)
+
+# - Get the tags (Scope and data types)
+sad = html_content.xpath('//li[@class="bio-tag domain"]/text()[last()]')
+sad = [x.strip() for x in sad]
+print(sad)
+
+# - Get the terminology artifacts
+ta = html_content.xpath('//span[text()="Terminology Artifacts"]/../../ul/li/a/text()')
+ta = [x.strip() for x in ta]
+print(ta)
+
+# - Get the license
+lic_groups = html_content.xpath('//span[text()="Conditions of Use"]/../../span[@class="section-header"]')
+
+lic_info = []
+for lic_group in lic_groups:
+    applies_to = lic_group.xpath('text()') # Get the "Applies to" text and fix weird whitespace
+    applies_to = ' '.join(applies_to[0].split())
+    licenses = lic_group.xpath('following-sibling::ul[1]/li/span//text()')     # Get the licenses
+    licenses = [x.strip() for x in licenses]
+    lic_info.append((applies_to, licenses))     # Add the license information as a tuple
+
+
+lic_strings = []
+sep = '; '
+for lic in lic_info:
+    lic_strings.append(lic[0] + " = {" + sep.join(lic[1]) + "}")
+    lic_string = sep.join(lic_strings)
+
+
+licence = [lic_string]
+print(licence)
+
+# - FAIR Scrapper elements  
+# url, title, sad, ta, lic_info
+
+fpss = [url, title, sad, ta, licence]
+num_fpss = len(fpss)
+
+titles = ['url', 'title', 'coverage', 'vocabReuse', 'license']
+metrics = {key: value for (key, value) in zip(titles, fpss)}
+
 
 # ## FAIRSharing metrics
 # Write out dataset data quality metrics in RDF using W3C data vocabulary.  
@@ -15,9 +80,8 @@ import datetime
 timestarted = datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')
 
 
-metrics = json.loads(open('../catalogs/metrics.json').read())
-catalog = json.loads(open('../catalogs/downloadURL.json').read())
-details = json.loads(open('../catalogs/details.json').read())
+catalog = json.loads(open('downloadURL.json').read())
+details = json.loads(open('details.json').read())
 
 # Define namespaces
 dqv = Namespace("http://www.w3.org/ns/dqv#")
@@ -45,9 +109,7 @@ g.add((URIRef(dataset), dcat.distribution, URIRef(distribution)))
 # Add information about the provenance
 g.add((URIRef(dataset), prov.generated, bio2rdf.provenance))
 g.add((bio2rdf.provenance, rdf.type, prov.Activity))
-g.add((bio2rdf.provenance, prov.startedAtTime, Literal(timestarted)))#, lang="en")))
-#g.add((bio2rdf.provenance, prov.endedAtTime, ))
-#<http://bio2rdf.org#CHEMBL> <http://dublincore.org/2012/06/14/dcterms#issued> “Date of formal issuance (e.g., publication) of the distribution”^^ <http://www.w3.org/2001/XMLSchema#gYear>
+g.add((bio2rdf.provenance, prov.startedAtTime, Literal(str(timestarted),datatype=XSD.time)))
 # Add information about the distribution
 g.add((URIRef(distribution), rdf.type, dcat.distribution))
 g.add((URIRef(distribution), dcat.downloadURL, URIRef(metrics['url'])))
@@ -97,7 +159,7 @@ def serialize_file(file, format='ttl'):
         sys.stderr.write('Error while trying to serialize preliminary stats RDF graph to file: ' + file + '\n')
 
 
+#format_file = sys.arg[2]
 
-serialize_file('chembl.nt', 'nt')
-
+serialize_file(str(metrics['title'][:8]) + str(timestarted)+'.nt', 'nt')
 
