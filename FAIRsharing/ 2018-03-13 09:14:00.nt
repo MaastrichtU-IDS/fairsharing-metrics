@@ -1,0 +1,56 @@
+<http://bio2rdf.org#CHEMBL> <http://www.w3.org/ns/dcat#distribution> <http://bio2rdf.org#CHEMBLdatasetDistribution> .
+<http://www.w3.org/ns/dqv#Interoperability> <http://www.w3.org/ns/dqv#inCategory> <http://www.w3.org/ns/dqv#Representational> .
+<http://www.w3.org/ns/dqv#R2metric> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/dqv#QualityMeasurement> .
+<http://www.w3.org/ns/dqv#Relevancy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/dqv#Dimension> .
+<http://www.w3.org/hcls#license> <http://www.w3.org/ns/dqv#isMeasurementOf> <http://www.w3.org/ns/dqv#L2metric> .
+<http://www.w3.org/hcls#coverage> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/dqv#QualityMeasurement> .
+<http://www.w3.org/ns/dqv#Contextual> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/dqv#Category> .
+<http://bio2rdf.org#provenance> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/prov#Activity> .
+<http://bio2rdf.org#CHEMBL> <http://purl.org/dc/terms/title> "ChEMBL: a large-scale bioactivity database for drug discovery"@en .
+<http://www.w3.org/ns/dqv#Relevancy> <http://www.w3.org/2004/02/skos/core#definition> "Relevancy refers to the provision of information which is in accordance with the task at hand and important to the users query."@en .
+<http://www.w3.org/ns/dqv#Relevancy> <http://www.w3.org/ns/dqv#inCategory> <http://www.w3.org/ns/dqv#Contextual> .
+<http://bio2rdf.org#CHEMBLdatasetDistribution> <http://www.w3.org/ns/dqv#hasQualityMeasurement> <http://www.w3.org/hcls#vocabReuse> .
+<http://www.w3.org/hcls#license> <http://www.w3.org/ns/dqv#value> "Applies to: Data use = {Creative Commons Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)}"@en .
+<http://bio2rdf.org#CHEMBLdatasetDistribution> <http://www.w3.org/ns/dcat#downloadURL> <https://fairsharing.org/biodbcore-000015> .
+<http://bio2rdf.org#CHEMBL> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/dcat#Dataset> .
+<http://www.w3.org/ns/dqv#Licensing> <http://www.w3.org/2004/02/skos/core#definition> "Interoperability is the degree to which the format and structure of the information conforms to previously returned information as well as data from other sources."@en .
+<http://www.w3.org/ns/dqv#Licensing> <http://www.w3.org/ns/dqv#inCategory> <http://www.w3.org/ns/dqv#Accessibility> .
+<http://www.w3.org/ns/dqv#L2metric> <http://www.w3.org/2004/02/skos/core#type> "Detection of a license in the documentation of the dataset."@en .
+<http://bio2rdf.org#CHEMBLdatasetDistribution> <http://www.w3.org/ns/dqv#hasQualityMeasurement> <http://www.w3.org/hcls#coverage> .
+<http://www.w3.org/ns/dqv#R2metric> <http://www.w3.org/2004/02/skos/core#type> "Coverage of scope and datatypes in the dataset."@en .
+<http://www.w3.org/hcls#vocabReuse> <http://www.w3.org/ns/dqv#computedOn> <http://bio2rdf.org#CHEMBLdatasetDistribution> .
+<http://www.w3.org/ns/dqv#Licensing> <http://www.w3.org/2004/02/skos/core#prefLabel> "Licensing"@en .
+<http://www.w3.org/hcls#coverage> <http://www.w3.org/ns/dqv#value> "Peptide"@en .
+<http://www.w3.org/ns/dqv#IO2metric> <http://www.w3.org/ns/dqv#inDimension> <http://www.w3.org/ns/dqv#Interoperability> .
+<http://www.w3.org/ns/dqv#Interoperability> <http://www.w3.org/2004/02/skos/core#definition> "Interoperability is the degree to which the format and structure of the information conforms to previously returned information as well as data from other sources."@en .
+<http://www.w3.org/ns/dqv#Interoperability> <http://www.w3.org/2004/02/skos/core#prefLabel> "Interoperability"@en .
+<http://bio2rdf.org#CHEMBLdatasetDistribution> <http://purl.org/dc/terms/title> "ChEMBL: a large-scale bioactivity database for drug discovery"@en .
+<http://www.w3.org/ns/dqv#IO2metric> <http://www.w3.org/ns/dqv#expectedDatatype> <http://www.w3.org/2001/XMLSchema#string> .
+<http://bio2rdf.org#CHEMBLdatasetDistribution> <http://www.w3.org/ns/dqv#hasQualityMeasurement> <http://www.w3.org/hcls#license> .
+<http://www.w3.org/hcls#vocabReuse> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/dqv#QualityMeasurement> .
+<http://www.w3.org/ns/dqv#Accessibility> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/dqv#Category> .
+<http://www.w3.org/hcls#coverage> <http://www.w3.org/ns/dqv#isMeasurementOf> <http://www.w3.org/ns/dqv#R2metric> .
+<http://www.w3.org/ns/dqv#R2metric> <http://www.w3.org/ns/dqv#inDimension> <http://www.w3.org/ns/dqv#Relevancy> .
+<http://www.w3.org/hcls#coverage> <http://www.w3.org/ns/dqv#value> "Approved drug"@en .
+<http://www.w3.org/ns/dqv#Relevancy> <http://www.w3.org/2004/02/skos/core#prefLabel> "Relevancy"@en .
+<http://www.w3.org/ns/dqv#IO2metric> <http://www.w3.org/2004/02/skos/core#type> "Re-use of existing vocabularies."@en .
+<http://www.w3.org/ns/dqv#Representational> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/dqv#Category> .
+<http://www.w3.org/ns/dqv#L2metric> <http://www.w3.org/ns/dqv#inDimension> <http://www.w3.org/ns/dqv#Licensing> .
+<http://www.w3.org/ns/dqv#IO2metric> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/dqv#QualityMeasurement> .
+<http://www.w3.org/hcls#coverage> <http://www.w3.org/ns/dqv#value> "Biomedical Science"@en .
+<http://www.w3.org/hcls#license> <http://www.w3.org/ns/dqv#computedOn> <http://bio2rdf.org#CHEMBLdatasetDistribution> .
+<http://www.w3.org/ns/dqv#L2metric> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/dqv#QualityMeasurement> .
+<http://www.w3.org/hcls#vocabReuse> <http://www.w3.org/ns/dqv#isMeasurementOf> <http://www.w3.org/ns/dqv#IO2metric> .
+<http://www.w3.org/hcls#license> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/dqv#QualityMeasurement> .
+<http://www.w3.org/hcls#coverage> <http://www.w3.org/ns/dqv#value> "Small molecule"@en .
+<http://www.w3.org/ns/dqv#L2metric> <http://www.w3.org/ns/dqv#expectedDatatype> <http://www.w3.org/2001/XMLSchema#string> .
+<http://www.w3.org/hcls#vocabReuse> <http://www.w3.org/ns/dqv#value> "Chemical Entities of Biological Interest"@en .
+<http://bio2rdf.org#provenance> <http://www.w3.org/ns/prov#startedAtTime> "20:18:00-03:00"^^<http://www.w3.org/2001/XMLSchema#time> .
+<http://www.w3.org/ns/dqv#Licensing> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/dqv#Dimension> .
+<http://bio2rdf.org#CHEMBLdatasetDistribution> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/dcat#distribution> .
+<http://bio2rdf.org#CHEMBL> <http://www.w3.org/ns/prov#generated> <http://bio2rdf.org#provenance> .
+<http://www.w3.org/ns/dqv#R2metric> <http://www.w3.org/ns/dqv#expectedDatatype> <http://www.w3.org/2001/XMLSchema#string> .
+<http://www.w3.org/hcls#coverage> <http://www.w3.org/ns/dqv#computedOn> <http://bio2rdf.org#CHEMBLdatasetDistribution> .
+<http://www.w3.org/hcls#vocabReuse> <http://www.w3.org/ns/dqv#value> "PSI Molecular Interaction Controlled Vocabulary"@en .
+<http://www.w3.org/ns/dqv#Interoperability> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/dqv#Dimension> .
+

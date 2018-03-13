@@ -4,7 +4,13 @@ import requests
 from lxml import html
 import pandas as pd
 import json
+from rdflib import Graph, Literal, URIRef, Namespace, RDF
+from rdflib.namespace import DCTERMS, XSD
+import time
+import datetime
 
+
+timestarted = datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')
 
 # #### fair_scraper(url)
 # FAIRsharing.org for some basic information.
@@ -66,18 +72,11 @@ titles = ['url', 'title', 'coverage', 'vocabReuse', 'license']
 metrics = {key: value for (key, value) in zip(titles, fpss)}
 
 
+#=====================================
+
 # ## FAIRSharing metrics
 # Write out dataset data quality metrics in RDF using W3C data vocabulary.  
 # Converting preliminary statistics to W3C DQV
-
-from rdflib import Graph, Literal, URIRef, Namespace, RDF
-from rdflib.namespace import DCTERMS, XSD
-import json
-import time
-import datetime
-
-
-timestarted = datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')
 
 
 catalog = json.loads(open('downloadURL.json').read())
