@@ -26,7 +26,7 @@ The purpose of this project is to provide automation as a stand-alone implementa
 ### Run the Docker container to get the FAIRmetrics
 
         docker run -it --rm \
-        -v "$PWD"/FAIRsharing:/root/FAIRsharing \
+        -v <PATH-TO-OUTPU-FILE>:/data/ \
         fairsharing-metrics <URL>
 
     urls = ['https://fairsharing.org/biodbcore-000015',
