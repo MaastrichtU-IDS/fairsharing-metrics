@@ -23,19 +23,7 @@ The purpose of this project is to provide automation as a stand-alone implementa
 
         docker build -t fairsharing-metrics .
 
-### Run the Docker container
-
-        docker run -it \
-        -v "$PWD"/FAIRsharing:/root/FAIRsharing \
-        --name=FAIRsharing fairsharing-metrics
-
-(exit the container `exit`)
-
-In case you want to run again an existing container
-
-        docker start -ai FAIRsharing
-
-### Run once
+### Run the Docker container to get the FAIRmetrics
 
         docker run -it --rm \
         -v "$PWD"/FAIRsharing:/root/FAIRsharing \

@@ -2,13 +2,11 @@ import os
 import sys
 import requests
 from lxml import html
-import pandas as pd
-import json
 from rdflib import Graph, Literal, URIRef, Namespace, RDF
 from rdflib.namespace import DCTERMS, XSD
 import time
 import datetime
-
+import json
 
 timestarted = datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')
 
@@ -155,10 +153,10 @@ def serialize_file(file, format='ttl'):
         g.serialize(destination=file, format=format)
         print('FAIRsharing Metrics in W3C DQV written to: ' + file)
     except IOError:
-        sys.stderr.write('Error while trying to serialize preliminary stats RDF graph to file: ' + file + '\n')
+        sys.stderr.write('Error while trying to serialize fairshairng metrics RDF graph to file: ' + file + '\n')
 
 
 #format_file = sys.arg[2]
 
-serialize_file(str(metrics['title'][:8]) + str(timestarted)+'.nt', 'nt')
-
+write = '/data/'+str(metrics['title'][:8]) + str(timestarted) + '.nt'
+serialize_file(write, 'nt')
