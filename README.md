@@ -21,18 +21,26 @@ The purpose of this project is to provide automation as a stand-alone implementa
 
 ### Build the Docker image
 
-        docker build -t fairsharing-metrics .
+```shell
+docker build -t fairsharing-metrics .
+```
 
 ### Run the Docker container to get the FAIRmetrics
 
-        docker run -it --rm \
-        -v <PATH-TO-OUTPU-FILE>:/data/ \
-        fairsharing-metrics <URL>
+```shell
+docker run -it --rm \
+    -v <PATH-TO-OUTPU-FILE>:/data/ \
+    fairsharing-metrics <URL>
+    
+docker run -it --rm \
+    -v /data/fairmetrics:/data/ \
+    fairsharing-metrics https://fairsharing.org/biodbcore-000015
 
-    urls = ['https://fairsharing.org/biodbcore-000015',
-            'https://fairsharing.org/biodbcore-000304',
-            'https://fairsharing.org/biodbcore-000456',
-            'https://fairsharing.org/bsg-s000909']
+urls = ['https://fairsharing.org/biodbcore-000015',
+        'https://fairsharing.org/biodbcore-000304',
+        'https://fairsharing.org/biodbcore-000456',
+        'https://fairsharing.org/bsg-s000909']
+```
 
 
 ## Licence
