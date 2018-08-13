@@ -153,10 +153,11 @@ def serialize_file(file, format='ttl'):
         g.serialize(destination=file, format=format)
         print('FAIRsharing Metrics in W3C DQV written to: ' + file)
     except IOError:
-        sys.stderr.write('Error while trying to serialize fairshairng metrics RDF graph to file: ' + file + '\n')
+        sys.stderr.write('Error while trying to serialize fairsharing metrics RDF graph to file: ' + file + '\n')
 
 
 #format_file = sys.arg[2]
 
-write = '/data/'+str(metrics['title'][:8]) + str(timestarted) + '.nt'
+#write = '/data/'+str(metrics['title'][:8]) + str(timestarted) + '.nt'
+write = '/data/fairsharing.nt'
 serialize_file(write, 'nt')
