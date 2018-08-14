@@ -158,8 +158,10 @@ def serialize_file(file, format='ttl'):
 
 #format_file = sys.arg[2]
 
+# One with a timestamp
 write_timestamp = '/data/fairsharing/'+str(metrics['title'][:8]) + str(timestarted) + '.nt'
 serialize_file(write_timestamp, 'nt')
 
+# One generic to use in pipelines
 write = '/data/fairsharing.nt'
 serialize_file(write, 'nt')
