@@ -10,4 +10,4 @@ RUN sed -i -e 's/\r$//' *
 
 RUN pip install -r requirements.txt
 
-ENTRYPOINT ["./execute.sh"]
+ENTRYPOINT ["/root/FAIRsharing/execute.sh"]
