@@ -20,6 +20,7 @@ timestarted = datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H
 #     :return: FAIRPrelimStats object
 
 url = str(sys.argv [1])#'https://fairsharing.org/biodbcore-000015'
+
 page = requests.get(url)
 html_content = html.fromstring(page.content)
 
@@ -154,12 +155,14 @@ def serialize_file(file, format='ttl'):
         print('FAIRsharing Metrics in W3C DQV written to: ' + file)
     except IOError:
         sys.stderr.write('Error while trying to serialize fairsharing metrics RDF graph to file: ' + file + '\n')
+        type, value, traceback = sys.exc_info()
+        sys.stderr.write('Error opening %s: %s' % (value.filename, value.strerror))
 
 
 #format_file = sys.arg[2]
 
-# One with a timestamp
-write_timestamp = '/data/fairsharing/'+str(metrics['title'][:8]) + str(timestarted) + '.nt'
+# One with a timestamp.
+write_timestamp = '/data/fairsharing-' + str(metrics['title'][:7]) + str(timestarted) + '.nt'
 serialize_file(write_timestamp, 'nt')
 
 # One generic to use in pipelines
