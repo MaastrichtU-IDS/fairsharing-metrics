@@ -78,8 +78,8 @@ metrics = {key: value for (key, value) in zip(titles, fpss)}
 # Converting preliminary statistics to W3C DQV
 
 
-catalog = json.loads(open('downloadURL.json').read())
-details = json.loads(open('details.json').read())
+catalog = json.loads(open('/app/downloadURL.json').read())
+details = json.loads(open('/app/details.json').read())
 
 # Define namespaces
 dqv = Namespace("http://www.w3.org/ns/dqv#")

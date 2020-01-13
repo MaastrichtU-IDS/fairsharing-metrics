@@ -2,12 +2,12 @@ FROM python:3.5
 
 LABEL maintainer "Pedro Hernandez <p.hernandezserrano@maastrichtuniverstity.nl>"
 
-WORKDIR /root/FAIRsharing
+WORKDIR /app
 
-COPY FAIRsharing/ ./
+COPY FAIRsharing/ /app
 
 RUN sed -i -e 's/\r$//' *
 
 RUN pip install -r requirements.txt
 
-ENTRYPOINT ["/root/FAIRsharing/execute.sh"]
+ENTRYPOINT ["python", "/app/scrapper_metrics.py"]
