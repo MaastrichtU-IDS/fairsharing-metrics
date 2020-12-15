@@ -3,7 +3,7 @@
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix bibo: <http://purl.org/ontology/bibo/> .
 
-<https://w3id.org/umids/project/fairsharing-metrics>
+<https://w3id.org/um/ids/projects#fairsharing-metrics>
   a doap:Project ;
   doap:name "Fairsharing Metrics" ;
   doap:description '''A Dockerization of the Fairsharing metrics as a module for Data Quality Analysis. The purpose of this project is to provide automation as a stand-alone implementation in order to escalate on more general data quality assessment.''' ;
@@ -24,6 +24,6 @@
   ] ;
   doap:maintainer [
     a foaf:Person ;
-    foaf:name "VIncent emonet" ;
-    foaf:mbox <mailto:vincent.emonet@maastrichtuniversity.nl>
+    foaf:name "Noone" ;
+    foaf:mbox <mailto:anyone@maastrichtuniversity.nl>
   ] .
